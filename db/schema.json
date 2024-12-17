@@ -1,0 +1,192 @@
+{
+  "metadata": {
+    "schema_name": "public"
+  },
+  "categories": {
+    "enums": [
+      {
+        "table_name": "boolean_enum",
+        "values": ["Yes", "No"]
+      },
+      {
+        "table_name": "frequency",
+        "values": ["Monthly", "Yearly"]
+      },
+      {
+        "table_name": "marketplace",
+        "values": ["Amazon", "Flipkart"]
+      },
+      {
+        "table_name": "package_insert_style_size",
+        "values": [
+          "Basic (3.5\" X 8.5\")",
+          "Basic (4\" X 6\")",
+          "Stadard (3.5\" X 8.5\")",
+          "Stadard (4\" X 6\")"
+        ]
+      },
+      {
+        "table_name": "plan_name",
+        "values": ["Unpaid", "Enterprise", "Professional", "Starter"]
+      },
+      {
+        "table_name": "survey_status",
+        "values": ["ACTIVE", "PAUSED"]
+      },
+      {
+        "table_name": "survey_style",
+        "values": ["Simple", "WithInfo"]
+      },
+      {
+        "table_name": "voucher_status",
+        "values": ["Available", "Consumed"]
+      }
+    ],
+    "foreign_keys": [
+      {
+        "table_name": "auth_logs",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "coupons",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "orders",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "package_inserts",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "package_inserts",
+        "column_name": "survey_id",
+        "relationship_info": "References surveys(id)"
+      },
+      {
+        "table_name": "products",
+        "column_name": "logo_id",
+        "relationship_info": "References logos(id)"
+      },
+      {
+        "table_name": "products",
+        "column_name": "survey_id",
+        "relationship_info": "References surveys(id)"
+      },
+      {
+        "table_name": "products",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "refresh_tokens",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "reviews",
+        "column_name": "survey_id",
+        "relationship_info": "References surveys(id)"
+      },
+      {
+        "table_name": "reviews",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "surveys",
+        "column_name": "background_id",
+        "relationship_info": "References survey_backgrounds(id)"
+      },
+      {
+        "table_name": "surveys",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      },
+      {
+        "table_name": "users",
+        "column_name": "plan_id",
+        "relationship_info": "References plans(id)"
+      },
+      {
+        "table_name": "vouchers",
+        "column_name": "user_id",
+        "relationship_info": "References users(id)"
+      }
+    ],
+    "functions": [
+      {
+        "table_name": "cleanup_expired_tokens",
+        "column_name": "void",
+        "type": "",
+        "nullable": "CREATE OR REPLACE FUNCTION public.cleanup_expired_tokens()\n RET",
+        "relationship_info": null
+      },
+      {
+        "table_name": "create_user_with_plan",
+        "column_name": "TABLE(id integer, email character varying, firstname character ",
+        "type": "p_email character varying, p_firstname character varying, p_lastname character varying, p_password_hash text, p_plan_name plan_name",
+        "nullable": "CREATE OR REPLACE FUNCTION public.create_user_with_plan(p_email",
+        "relationship_info": null
+      },
+      {
+        "table_name": "update_updated_at_column",
+        "column_name": "trigger",
+        "type": "",
+        "nullable": "CREATE OR REPLACE FUNCTION public.update_updated_at_column()\n R",
+        "relationship_info": null
+      }
+    ],
+    "tables": {
+      "auth_logs": [
+        {
+          "column_name": "id",
+          "type": "integer",
+          "nullable": "NO",
+          "relationship_info": null
+        },
+        {
+          "column_name": "user_id",
+          "type": "integer",
+          "nullable": "YES",
+          "relationship_info": null
+        },
+        {
+          "column_name": "event_type",
+          "type": "text",
+          "nullable": "NO",
+          "relationship_info": null
+        },
+        {
+          "column_name": "ip_address",
+          "type": "text",
+          "nullable": "YES",
+          "relationship_info": null
+        },
+        {
+          "column_name": "device_info",
+          "type": "text",
+          "nullable": "YES",
+          "relationship_info": null
+        },
+        {
+          "column_name": "details",
+          "type": "jsonb",
+          "nullable": "YES",
+          "relationship_info": null
+        },
+        {
+          "column_name": "timestamp",
+          "type": "timestamp without time zone",
+          "nullable": "YES",
+          "relationship_info": null
+        }
+      ]
+    }
+  }
+}
